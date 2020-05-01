@@ -67,7 +67,7 @@ export class EngineCore implements IEngineComponent {
 
 		// setup default camera
 		// @ts-ignore
-		this.cameras = [new OrthoCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
+		this.cameras = [new PerspectiveCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
 		window['cams']  = this.cameras;
 		this.activeCamera = this.cameras[0];
 		
