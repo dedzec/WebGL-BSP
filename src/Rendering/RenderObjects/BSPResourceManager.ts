@@ -51,6 +51,7 @@ export class BSPResourceManager {
 
 	public addShaders(index: number, shaders: ShaderSource[]) {
 		shaders.forEach((shader) => {
+			// @ts-ignore
 			this.gl.attachShader(this.shaderPrograms[index], shader.compileShader(this.gl));
 		});
 

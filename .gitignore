@@ -1,8 +1,6 @@
 *.js
 *.js.map
+dist
 
 .tmp/
 node_modules/
-
-#Allow the final bundled file to be included
-!WebBSP.js

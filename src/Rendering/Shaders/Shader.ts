@@ -21,13 +21,16 @@ export function CreateShaderProgram(gl: WebGL2RenderingContext, sourceShaders: S
     // attach shaders to the program
     const shaderProgram = gl.createProgram();
     compiledShaders.forEach((shader) => {
+        // @ts-ignore
         gl.attachShader(shaderProgram, shader);
     });
-
+// @ts-ignore
     gl.linkProgram(shaderProgram);
 
     // check for errors
+    // @ts-ignore
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+        // @ts-ignore
         console.log("Unable to initialize shader program: " + gl.getProgramInfoLog(shaderProgram));
         return null;
     }
@@ -44,12 +47,16 @@ export function LoadShader(gl: WebGL2RenderingContext, shaderSource: ShaderSourc
     const shader: WebGLShader | null = gl.createShader(shaderSource.type);
 
     // compile shader
+    // @ts-ignore
     gl.shaderSource(shader, shaderSource.source);
+    // @ts-ignore
     gl.compileShader(shader);
 
     // check for errors
+    // @ts-ignore
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
         console.log("----------Failed to compile shader----------\n" + shaderSource.source);
+        // @ts-ignore
         console.log("Info log: " + gl.getShaderInfoLog(shader));
         gl.deleteShader(shader);
         return null;

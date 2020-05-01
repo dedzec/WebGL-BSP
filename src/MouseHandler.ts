@@ -29,6 +29,7 @@ export class MouseHandler implements IEngineComponent {
 
 	constructor(coreEngine: EngineCore) {
 		document.addEventListener("mousemove", this.mouseCallback.bind(this, coreEngine));
+		// @ts-ignore
 		document.addEventListener("pointerlockchange", this.pointerLockChanged.bind(this, coreEngine));
 		document.addEventListener("pointerlockerror", () => console.log("Pointer lock failed"));
 	}

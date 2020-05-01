@@ -148,7 +148,6 @@ export class PerspectiveCamera implements ICamera {
 	private moveForward() {
 		// get front matrix
 		const front = this.getFront();
-
 		// x
 		this.position[0] += (this.speed * this.mulitplier * front[0]);
 

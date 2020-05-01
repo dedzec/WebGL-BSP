@@ -15,6 +15,7 @@ import { MessageQueue } from "./Messaging/MessageQueue";
 import { IEngineComponent } from "./IEngineComponent";
 import { Message, MessageType } from "./Messaging/Message";
 import { Key, KeyPress, KeyModifier, KeyState } from "../Utils/KeyPress";
+import {OrthoCamera} from "./Camera/OrthoCamera";
 
 export class EngineCore implements IEngineComponent {
 	public componentName = "CoreEngine";
@@ -65,7 +66,9 @@ export class EngineCore implements IEngineComponent {
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
 		// setup default camera
-		this.cameras = [new PerspectiveCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
+		// @ts-ignore
+		this.cameras = [new OrthoCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
+		window['cams']  = this.cameras;
 		this.activeCamera = this.cameras[0];
 		
 		// setup keyboard listener
@@ -120,7 +123,9 @@ export class EngineCore implements IEngineComponent {
 	private resize() {
 		const pixelRatio = window.devicePixelRatio || 1;
 
+		// @ts-ignore
 		const width = Math.floor(this.gl.canvas.clientWidth * pixelRatio);
+		// @ts-ignore
 		const height = Math.floor(this.gl.canvas.clientHeight * pixelRatio);
 
 		if (this.gl.canvas.width !== width || this.gl.canvas.height !== height) {

@@ -11,12 +11,16 @@ export class ShaderSource {
 		const shader = gl.createShader(this.type);
 
 		// compile shader
+		// @ts-ignore
 		gl.shaderSource(shader, this.source);
+		// @ts-ignore
 		gl.compileShader(shader);
 	
 		// check for errors
+		// @ts-ignore
 		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
 			console.log("----------Failed to compile shader----------\n" + this.source);
+			// @ts-ignore
 			console.log("Info log: " + gl.getShaderInfoLog(shader));
 			gl.deleteShader(shader);
 			throw new Error("Failed to compile shader");

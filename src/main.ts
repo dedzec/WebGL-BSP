@@ -16,11 +16,13 @@ import { LeafLump } from "./BSP/Lumps/LeafLump";
 // export function so it can be called globally
 // @ts-ignore
 window.initWebGL = initWebGL;
-
+type FileReaderProgressEvent = any;
 function initWebGL(): void {
     const bspRenderer = new BSPRenderer();
 }
+// CAMERA GAME & APP =>
 
+    // Game X = App X, Game Y ^-1 = App Z, Game Z = APP X
 class BSPRenderer {
     public gl!: WebGL2RenderingContext | null;
     public renderer!: EngineCore;
