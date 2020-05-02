@@ -46,7 +46,7 @@ export class BSPMesh implements IRenderable {
 		
 		// node 0 is world geometry
 		// TODO: walk every bsp tree once entity info parsing is available and their offsets can be obtained
-		// this.models[0].draw(gl, cameraState, renderModeOverride);
+		this.models[0].draw(gl, cameraState, renderModeOverride);
 		// this.models.forEach((model) => {
 		// 	model.draw(gl, cameraState, renderModeOverride);
 		// });
