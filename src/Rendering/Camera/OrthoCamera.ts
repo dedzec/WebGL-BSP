@@ -63,6 +63,14 @@ export class OrthoCamera implements ICamera {
 		// calculate projection matrix
 		this.getProjectionMatrix();
 	}
+	private setAng(ang: vec3) {
+		this.horizontalAngle = ang[0];
+		this.verticalAngle = ang[1];
+	}
+
+	private setPos(pos: vec3) {
+		this.position = pos;
+	}
 
 	public getFront(): vec3 {
 		throw new Error("Method not implemented.");

@@ -57,7 +57,7 @@ export class PerspectiveCamera implements ICamera {
         console.log("	Aspect Ratio: " + this.aspectRatio);
 
         // start camera at world center
-        this.position = vec3.fromValues(0, 0, 0);
+        this.position = vec3.fromValues(-415, 65, -425);
 
         this.horizontalAngle = 0;
         this.verticalAngle = 0;
@@ -218,15 +218,11 @@ export class PerspectiveCamera implements ICamera {
     }
 
     private setAng(ang: vec3) {
-        console.log('SHOULD SET ANGLE');
-        console.log(ang);
         this.horizontalAngle = ang[0];
         this.verticalAngle = ang[1];
     }
 
     private setPos(pos: vec3) {
-        console.log('SHOULD SET pos');
-        console.log(pos);
         this.position = pos;
     }
 

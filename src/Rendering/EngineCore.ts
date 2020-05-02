@@ -17,6 +17,8 @@ import { Message, MessageType } from "./Messaging/Message";
 import { Key, KeyPress, KeyModifier, KeyState } from "../Utils/KeyPress";
 import {OrthoCamera} from "./Camera/OrthoCamera";
 import {ChangeView} from "./Debug/ChangeView";
+import {WebSocketService} from "../Socket/WebSocketService";
+import {EntityLocationService} from "./GameData/Entities/EntityLocationService";
 
 export class EngineCore implements IEngineComponent {
 	public componentName = "CoreEngine";
@@ -45,7 +47,7 @@ export class EngineCore implements IEngineComponent {
 
 	public keyboardListener!: KeyboardListener;
 	public mouseHandler!: MouseHandler;
-
+	public socketService!: WebSocketService;
 	public changeView!: ChangeView;
 	private previousTime = 0;
 	private deltaTime = 0;
@@ -77,6 +79,8 @@ export class EngineCore implements IEngineComponent {
 		this.keyboardListener = new KeyboardListener(this);
 		this.mouseHandler = new MouseHandler(this);
 		this.changeView = new ChangeView(this);
+		this.socketService = new WebSocketService(this);
+
 		EngineCore.renderer = this;
 	}
 

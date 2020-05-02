@@ -11,11 +11,11 @@ export class ChangeView implements IEngineComponent {
     public listen = true;
 
     constructor(coreEngine: EngineCore) {
-        window['setpos'] = (x: number, y: number, z: number) => {
+        window['setPos'] = (x: number, y: number, z: number) => {
             coreEngine.messageQueue.add(new Message(coreEngine, this, MessageType.SetPos, vec3.fromValues(x, y,z)));
         };
 
-        window['setang'] = (x: number, y: number, z: number) => {
+        window['setAng'] = (x: number, y: number, z: number) => {
             coreEngine.messageQueue.add(new Message(coreEngine, this, MessageType.SetAng, vec3.fromValues(x, y,z)));
         };
 

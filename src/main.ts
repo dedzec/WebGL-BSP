@@ -12,6 +12,8 @@ import { DispVert } from "./BSP/Structs/DispVert";
 import { DispVertLump } from "./BSP/Lumps/DispVertLump";
 import { DispTrisLump } from "./BSP/Lumps/DispTrisLump";
 import { LeafLump } from "./BSP/Lumps/LeafLump";
+import {EntityLocationService} from "./Rendering/GameData/Entities/EntityLocationService";
+import {LocalEntityView} from "./Rendering/GameData/Entities/LocalEntityView";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -28,7 +30,8 @@ function initWebGL(): void {
 class BSPRenderer {
     public gl!: WebGL2RenderingContext | null;
     public renderer!: EngineCore;
-
+    public entityLocationService!: EntityLocationService;
+    public localEntityview!: LocalEntityView;
     constructor() {
         const canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement;
         if (!canvas) {
@@ -118,6 +121,8 @@ class BSPRenderer {
         if (this.gl == null) {
             return;
         }
+        this.entityLocationService = new EntityLocationService(this.renderer, this.renderer.socketService, bsp);
+        this.localEntityview = new LocalEntityView(this.renderer,this.renderer.socketService);
         // const lump = bsp.readLump(LumpType.Leafs) as LeafLump;
         // console.log(lump.toString());
         // bsp.printLumps();
