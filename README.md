@@ -1,6 +1,6 @@
 # WebGL-BSP
 # New Features
-Rendering the current game view
+Rendering the current game view when using https://github.com/xsip/csgo-typescript-v2
 ![faces](https://github.com/xsip/WebGL-BSP/blob/master/preview.JPG)
 
 A 3D Source Engine BSP renderer
