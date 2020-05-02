@@ -13,12 +13,16 @@ export class LocalEntityView {
   private getLocalViewAndPosition() {
     this.socketService.addSocketReceiver((d) => {
       const json = JSON.parse(d);
+
       if(json && json.local) {
+
         this.viewAngles = vec3.fromValues(json.local.viewAngles.y*-1,json.local.viewAngles.x*-1, json.local.viewAngles.z);
         this.position = vec3.fromValues(json.local.position.x,json.local.position.z+=json.local.vecView.z, json.local.position.y*-1);
-        window['setPos'](this.position[0], this.position[1], this.position[2]);
-        window['setAng'](this.viewAngles[0], this.viewAngles[1], this.viewAngles[2]);
-        // console.log(this.viewAngles);
+
+        this.coreEngine.activeCamera.position = this.position;
+        this.coreEngine.activeCamera.horizontalAngle = this.viewAngles[0];
+        this.coreEngine.activeCamera.verticalAngle = this.viewAngles[1];
+
       }
     });
   }
