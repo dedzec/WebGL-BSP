@@ -23,6 +23,8 @@ function initWebGL(): void {
 // CAMERA GAME & APP =>
 
     // Game X = App X, Game Y ^-1 = App Z, Game Z = APP X
+
+// setpos 1114.591553 950.518738 128.093811;setang -0.770001 177.425369 0.000000
 class BSPRenderer {
     public gl!: WebGL2RenderingContext | null;
     public renderer!: EngineCore;

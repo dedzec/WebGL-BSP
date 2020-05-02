@@ -16,6 +16,7 @@ import { IEngineComponent } from "./IEngineComponent";
 import { Message, MessageType } from "./Messaging/Message";
 import { Key, KeyPress, KeyModifier, KeyState } from "../Utils/KeyPress";
 import {OrthoCamera} from "./Camera/OrthoCamera";
+import {ChangeView} from "./Debug/ChangeView";
 
 export class EngineCore implements IEngineComponent {
 	public componentName = "CoreEngine";
@@ -45,6 +46,7 @@ export class EngineCore implements IEngineComponent {
 	public keyboardListener!: KeyboardListener;
 	public mouseHandler!: MouseHandler;
 
+	public changeView!: ChangeView;
 	private previousTime = 0;
 	private deltaTime = 0;
 	public renderFrame = false;
@@ -74,7 +76,7 @@ export class EngineCore implements IEngineComponent {
 		// setup keyboard listener
 		this.keyboardListener = new KeyboardListener(this);
 		this.mouseHandler = new MouseHandler(this);
-
+		this.changeView = new ChangeView(this);
 		EngineCore.renderer = this;
 	}
 
@@ -156,7 +158,12 @@ export class EngineCore implements IEngineComponent {
 				// TODO: disable this once brush ents / moving things are working
 				this.renderFrame = message.data;
 				break;
-
+			case MessageType.SetAng:
+				this.activeCamera.onMessage(message);
+				break;
+			case MessageType.SetPos:
+				this.activeCamera.onMessage(message);
+				break;
 			case MessageType.MoveCamera:
 				this.activeCamera.onMessage(message);
 				break;

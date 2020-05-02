@@ -44,4 +44,6 @@ export enum MessageType {
 	ToggleRender, // bool
 	MoveCamera, // MoveDirection enum
 	MouseMove, // vec2 (dx, dy)
+	SetPos,
+	SetAng
 }
